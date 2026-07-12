@@ -75,24 +75,24 @@
   - [x] Dry-run mode
   - [x] Backup tests
 
-- [ ] **Task 7: Sync Engine**
-  - [ ] fs.watch wrapper
-  - [ ] Debounce logic
-  - [ ] Change/delete handling
-  - [ ] Graceful shutdown
+- [x] **Task 7: Sync Engine**
+  - [x] fs.watch wrapper
+  - [x] Debounce logic
+  - [x] Change/delete handling
+  - [x] Graceful shutdown
 
 ---
 
 ## Phase 3: CLI & Polish (Tasks 8-10)
 
-- [ ] **Task 8: CLI Commands**
-  - [ ] Entry point (Commander)
-  - [ ] vault config set-key / show
-  - [ ] vault upload
-  - [ ] vault backup
-  - [ ] vault sync
-  - [ ] vault status
-  - [ ] --verbose, --json flags
+- [x] **Task 8: CLI Commands**
+  - [x] Entry point (Commander)
+  - [x] `vault config set-key / show`
+  - [x] `vault upload`
+  - [x] `vault backup`
+  - [x] `vault sync`
+  - [x] `vault status`
+  - [x] `--verbose`, `--json` flags
 
 - [ ] **Task 9: Testing & CI**
   - [ ] Integration tests

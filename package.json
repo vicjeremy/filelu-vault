@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Secure backup, sync & upload CLI for FileLu cloud storage",
   "type": "module",
-  "main": "dist/cli/index.js",
+  "main": "dist/index.js",
   "bin": {
-    "vault": "dist/cli/index.js"
+    "vault": "dist/index.js"
   },
   "scripts": {
     "build": "tsup src/cli/index.ts --format esm --dts --clean",

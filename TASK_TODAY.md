@@ -1,7 +1,7 @@
 # Task Today
 
 **Date:** 2026-07-12
-**Focus:** Task 7 — Sync Engine
+**Focus:** Task 9 — Testing & CI
 **Agent:** Antigravity (Gemini 3.1 Pro High)
 
 ## Status
@@ -13,13 +13,21 @@
 - [x] Task 4: Upload Engine
 - [x] Task 5: Client-Side Encryption
 - [x] Task 6: Backup Engine
-- [/] Task 7: Sync Engine
-  - [ ] Step 1: Implement fs.watch wrapper
-  - [ ] Step 2: Implement debounce logic for fast-changing files
-  - [ ] Step 3: Handle add/change events (upload/encrypt)
-  - [ ] Step 4: Handle delete events (remove from DB)
-  - [ ] Step 5: Graceful shutdown handling
+- [x] Task 7: Sync Engine
+- [x] Task 8: CLI Commands
+  - [x] Step 1: Create src/cli/index.ts (entry point)
+  - [x] Step 2: Implement Config commands (`config set-key`, `config show`)
+  - [x] Step 3: Implement Upload command (`upload <file>`)
+  - [x] Step 4: Implement Backup command (`backup <dir>`)
+  - [x] Step 5: Implement Sync command (`sync <dir>`)
+  - [x] Step 6: Implement Status command (`status`)
+  - [x] Step 7: Handle `--verbose` and `--json` formatting per DESIGN.md
+  - [x] Step 8: Wire up graceful shutdown for sync (`SIGINT`)
+  - [x] Step 9: Make it executable (`chmod +x bin/vault.js`)
+- [/] Task 9: Testing & CI
+  - [ ] Complete e2e/integration tests (`tests/integration/`)
+  - [ ] Set up GitHub Actions CI (`.github/workflows/ci.yml`)
 
 ## Next After This
 
-Task 8: CLI Commands
+Task 10: Documentation & GitHub Publish
