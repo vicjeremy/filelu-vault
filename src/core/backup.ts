@@ -46,8 +46,7 @@ export class BackupEngine {
     }
 
     logger.info(`Starting backup of ${sourceDir}`);
-    if (options?.dryRun) logger.info('--dry-run enabled (no files will be uploaded)');
-    if (options?.encrypt) logger.info('--encrypt enabled');
+    if (options?.dryRun) try { logger.info('--dry-run enabled (no files will be uploaded)'); } catch { /* ignore */ } if (options?.encrypt) logger.info('--encrypt enabled');
 
     // 1. Scan directory
     const files = this.scanDir(sourceDir, excludePatterns);
@@ -66,13 +65,12 @@ export class BackupEngine {
     }
 
     // 2. Create job in DB
-    let jobId: number;
     const stmt = this.db.connection.prepare(`
       INSERT INTO backup_jobs (source_dir, files_total)
       VALUES (?, ?)
     `);
     const row = stmt.run(sourceDir, files.length);
-    jobId = row.lastInsertRowid as number;
+    const jobId = row.lastInsertRowid as number;
     result.jobId = jobId;
 
     // 3. Upload files

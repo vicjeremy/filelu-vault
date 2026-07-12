@@ -48,7 +48,12 @@ function timestamp(): string {
 function formatMeta(meta?: Record<string, unknown>): string {
   if (!meta || Object.keys(meta).length === 0) return '';
   const pairs = Object.entries(meta)
-    .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
+    .map(([k, v]) => {
+      if (v instanceof Error) {
+        return `${k}=${JSON.stringify(v.message)}`;
+      }
+      return `${k}=${JSON.stringify(v)}`;
+    })
     .join(' ');
   return ` ${pairs}`;
 }

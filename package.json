@@ -18,7 +18,14 @@
     "lint": "eslint src/ tests/",
     "lint:fix": "eslint src/ tests/ --fix"
   },
-  "keywords": ["filelu", "backup", "sync", "upload", "cli", "cloud-storage"],
+  "keywords": [
+    "filelu",
+    "backup",
+    "sync",
+    "upload",
+    "cli",
+    "cloud-storage"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {

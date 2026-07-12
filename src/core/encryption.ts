@@ -94,7 +94,9 @@ export class Encryptor {
     return new Promise((resolve, reject) => {
       const stream = createReadStream(filePath, { start, end });
       const chunks: Buffer[] = [];
-      stream.on('data', (chunk: Buffer) => chunks.push(chunk));
+      stream.on('data', (chunk) => {
+        chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk as string));
+      });
       stream.on('end', () => resolve(Buffer.concat(chunks)));
       stream.on('error', reject);
     });
