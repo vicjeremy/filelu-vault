@@ -1,0 +1,41 @@
+{
+  "name": "filelu-vault",
+  "version": "1.0.0",
+  "description": "Secure backup, sync & upload CLI for FileLu cloud storage",
+  "type": "module",
+  "main": "dist/cli/index.js",
+  "bin": {
+    "vault": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/cli/index.ts --format esm --dts --clean",
+    "dev": "tsx src/cli/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:integration": "vitest run --project integration",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix"
+  },
+  "keywords": ["filelu", "backup", "sync", "upload", "cli", "cloud-storage"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "commander": "^14.0.0",
+    "form-data": "^4.0.1",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.15.32",
+    "@typescript-eslint/eslint-plugin": "^8.63.0",
+    "@typescript-eslint/parser": "^8.63.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.29.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
