@@ -1,6 +1,6 @@
 # FileLu Vault
 
-[![CI](https://github.com/filelu-vault/filelu-vault/actions/workflows/ci.yml/badge.svg)](https://github.com/filelu-vault/filelu-vault/actions/workflows/ci.yml)
+[![CI](https://github.com/vicjeremy/filelu-vault/actions/workflows/ci.yml/badge.svg)](https://github.com/vicjeremy/filelu-vault/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)](https://www.typescriptlang.org/)
 
