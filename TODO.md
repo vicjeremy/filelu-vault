@@ -62,11 +62,11 @@
   - [x] Batch upload with concurrency
   - [x] Upload tests
 
-- [ ] **Task 5: Encryption**
-  - [ ] Key generation
-  - [ ] AES-256-GCM encrypt (streaming)
-  - [ ] AES-256-GCM decrypt (streaming)
-  - [ ] Roundtrip + tamper tests
+- [x] **Task 5: Encryption**
+  - [x] Key generation
+  - [x] AES-256-GCM encrypt (streaming)
+  - [x] AES-256-GCM decrypt (streaming)
+  - [x] Roundtrip + tamper tests
 
 - [ ] **Task 6: Backup Engine**
   - [ ] Directory scan

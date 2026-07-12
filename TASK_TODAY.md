@@ -1,7 +1,7 @@
 # Task Today
 
 **Date:** 2026-07-12
-**Focus:** Task 5 — Client-Side Encryption
+**Focus:** Task 6 — Backup Engine
 **Agent:** Antigravity (Gemini 3.1 Pro High)
 
 ## Status
@@ -11,16 +11,18 @@
 - [x] Task 2: FileLu API Client
 - [x] Task 3: Database Layer
 - [x] Task 4: Upload Engine
-- [/] Task 5: Client-Side Encryption
-  - [ ] Step 1: Implement generateKey()
-  - [ ] Step 2: Implement streaming encryptFile() (AES-256-GCM, random 12-byte IV, 16-byte auth tag)
-  - [ ] Step 3: Implement streaming decryptFile()
-  - [ ] Step 4: Write roundtrip test
-  - [ ] Step 5: Write tamper test
-  - [ ] Step 6: Run tests
-  - [ ] Step 7: Type check
-  - [ ] Step 8: Commit
+- [x] Task 5: Client-Side Encryption
+- [/] Task 6: Backup Engine
+  - [ ] Step 1: Implement recursive directory scan (skip excluded patterns)
+  - [ ] Step 2: Implement hash → dedup check → upload pipeline
+  - [ ] Step 3: Implement backup job tracking (create → update counts → complete)
+  - [ ] Step 4: Implement --dry-run mode
+  - [ ] Step 5: Implement --encrypt integration
+  - [ ] Step 6: Write tests with fixture directories
+  - [ ] Step 7: Run tests
+  - [ ] Step 8: Type check
+  - [ ] Step 9: Commit
 
 ## Next After This
 
-Task 6: Backup Engine
+Task 7: Sync Engine

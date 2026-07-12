@@ -45,9 +45,13 @@ export class Encryptor {
 
       await pipeline(inputStream, cipher, outputStream, { end: false });
 
-      // Append Auth Tag
+      // Append Auth Tag and wait for write to finish
       const authTag = cipher.getAuthTag();
-      outputStream.end(authTag);
+      await new Promise<void>((resolve, reject) => {
+        outputStream.on('finish', resolve);
+        outputStream.on('error', reject);
+        outputStream.end(authTag);
+      });
     } catch (err) {
       throw new EncryptionError(`Failed to encrypt file: ${inputPath}`, { cause: err as Error });
     }

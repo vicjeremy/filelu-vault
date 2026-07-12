@@ -8,6 +8,8 @@ import { statSync } from 'node:fs';
 
 export interface UploadOptions {
   encrypt?: boolean;
+  originalPath?: string;
+  originalHash?: string;
 }
 
 export interface BatchOptions extends UploadOptions {
@@ -35,14 +37,15 @@ export class Uploader {
    * Upload a single file with deduplication check and progress tracking.
    */
   async uploadFile(filePath: string, options?: UploadOptions): Promise<{ status: 'uploaded' | 'skipped', result?: UploadResult }> {
+    const dbPath = options?.originalPath || filePath;
     logger.debug(`Hashing file: ${filePath}`);
-    const hash = await hashFile(filePath);
+    const hash = options?.originalHash || await hashFile(filePath);
     const stat = statSync(filePath);
     
     // Check dedup
-    const existing = this.queries.checkDedup(filePath, hash);
+    const existing = this.queries.checkDedup(dbPath, hash);
     if (existing) {
-      logger.debug(`Skipping upload (dedup match): ${filePath}`);
+      logger.debug(`Skipping upload (dedup match): ${dbPath}`);
       return { status: 'skipped' };
     }
 
@@ -58,7 +61,7 @@ export class Uploader {
         encrypted = excluded.encrypted
       RETURNING id
     `);
-    const row = stmt.get(filePath, hash, stat.size, options?.encrypt ? 1 : 0) as { id: number };
+    const row = stmt.get(dbPath, hash, stat.size, options?.encrypt ? 1 : 0) as { id: number };
     fileId = row.id;
 
     try {
