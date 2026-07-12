@@ -68,12 +68,12 @@
   - [x] AES-256-GCM decrypt (streaming)
   - [x] Roundtrip + tamper tests
 
-- [ ] **Task 6: Backup Engine**
-  - [ ] Directory scan
-  - [ ] Incremental diff + upload
-  - [ ] Backup job tracking
-  - [ ] Dry-run mode
-  - [ ] Backup tests
+- [x] **Task 6: Backup Engine**
+  - [x] Directory scan
+  - [x] Incremental diff + upload
+  - [x] Backup job tracking
+  - [x] Dry-run mode
+  - [x] Backup tests
 
 - [ ] **Task 7: Sync Engine**
   - [ ] fs.watch wrapper

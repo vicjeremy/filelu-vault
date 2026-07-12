@@ -1,7 +1,7 @@
 # Task Today
 
 **Date:** 2026-07-12
-**Focus:** Task 6 — Backup Engine
+**Focus:** Task 7 — Sync Engine
 **Agent:** Antigravity (Gemini 3.1 Pro High)
 
 ## Status
@@ -12,17 +12,14 @@
 - [x] Task 3: Database Layer
 - [x] Task 4: Upload Engine
 - [x] Task 5: Client-Side Encryption
-- [/] Task 6: Backup Engine
-  - [ ] Step 1: Implement recursive directory scan (skip excluded patterns)
-  - [ ] Step 2: Implement hash → dedup check → upload pipeline
-  - [ ] Step 3: Implement backup job tracking (create → update counts → complete)
-  - [ ] Step 4: Implement --dry-run mode
-  - [ ] Step 5: Implement --encrypt integration
-  - [ ] Step 6: Write tests with fixture directories
-  - [ ] Step 7: Run tests
-  - [ ] Step 8: Type check
-  - [ ] Step 9: Commit
+- [x] Task 6: Backup Engine
+- [/] Task 7: Sync Engine
+  - [ ] Step 1: Implement fs.watch wrapper
+  - [ ] Step 2: Implement debounce logic for fast-changing files
+  - [ ] Step 3: Handle add/change events (upload/encrypt)
+  - [ ] Step 4: Handle delete events (remove from DB)
+  - [ ] Step 5: Graceful shutdown handling
 
 ## Next After This
 
-Task 7: Sync Engine
+Task 8: CLI Commands
