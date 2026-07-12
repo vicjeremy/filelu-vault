@@ -104,4 +104,14 @@
   - [x] Update README with real examples
   - [x] Create CHANGELOG.md
   - [x] Final architecture docs (DOCUMENTATION.md)
-  - [x] (Optional) Write `npm publish` workflowease v1.0.0
+  - [x] (Optional) Write `npm publish` workflow
+
+---
+
+## Phase 4: Future Expansion (API Driven)
+
+See [ROADMAP.md](./ROADMAP.md) for the complete list of upcoming features, including:
+- File & Folder Management (list, rename, move, delete)
+- Remote URL Uploads
+- Secure Sharing & Password Protection
+- Direct Downloads
