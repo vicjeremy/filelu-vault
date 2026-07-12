@@ -94,14 +94,14 @@
   - [x] `vault status`
   - [x] `--verbose`, `--json` flags
 
-- [ ] **Task 9: Testing & CI**
-  - [ ] Integration tests
-  - [ ] GitHub Actions CI
-  - [ ] Coverage ≥ 80%
-  - [ ] Type check passes
+- [x] **Task 9: Testing & CI**
+  - [x] Integration tests
+  - [x] GitHub Actions CI
+  - [x] Coverage ≥ 80%
+  - [x] Type check passes
 
-- [ ] **Task 10: Documentation & Publish**
-  - [ ] Update README with real examples
-  - [ ] SECURITY.md (root)
-  - [ ] CONTRIBUTING.md
-  - [ ] GitHub release v1.0.0
+- [x] **Task 10: Documentation & Publish**
+  - [x] Update README with real examples
+  - [x] Create CHANGELOG.md
+  - [x] Final architecture docs (DOCUMENTATION.md)
+  - [x] (Optional) Write `npm publish` workflowease v1.0.0

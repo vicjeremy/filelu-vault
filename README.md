@@ -1,140 +1,99 @@
 # FileLu Vault
 
-> Secure backup, sync & upload CLI for [FileLu](https://filelu.com) cloud storage.
+[![CI](https://github.com/filelu-vault/filelu-vault/actions/workflows/ci.yml/badge.svg)](https://github.com/filelu-vault/filelu-vault/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)](https://www.typescriptlang.org/)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://nodejs.org)
-
----
-
-## What It Does
-
-Upload files, back up directories, and sync changes to FileLu — all from your terminal, with optional AES-256 encryption.
-
-```bash
-vault upload report.pdf                    # Upload → get FileLu URL
-vault backup ./project                     # Incremental backup (skips unchanged)
-vault sync ./project                       # Watch + auto-upload on changes
-vault upload secret.doc --encrypt          # Encrypt before upload
-vault status                               # Account info + local stats
-```
-
----
+Secure, dedup-aware CLI for syncing and backing up files to [FileLu](https://filelu.com).
 
 ## Features
 
-| Feature | Description |
-|---------|-------------|
-| **Upload** | Single or batch file upload with progress bars |
-| **Backup** | Incremental directory backup — SHA-256 dedup skips unchanged files |
-| **Sync** | Real-time filesystem watcher with auto-upload |
-| **Encryption** | AES-256-GCM client-side encryption before upload |
-| **Dedup** | Hash-based deduplication — never upload the same file twice |
-| **Retry** | Exponential backoff on failures (3 attempts) |
-| **Parallel** | Configurable concurrent uploads (default: 3) |
-| **Dry-Run** | Preview what would be uploaded without doing it |
+- **Blazing Fast Uploads:** Streams directly to the optimal FileLu ingest server.
+- **Deduplication:** Local SQLite database prevents re-uploading unchanged files via SHA-256 hash tracking.
+- **Client-Side Encryption:** Optional AES-256-GCM encryption before data leaves your machine.
+- **Continuous Sync:** Built-in `fs.watch` wrapper to auto-upload modified files.
+- **Cross-Platform:** Works seamlessly on Windows, macOS, and Linux.
+- **Zero-Dependency Core:** Only depends on `better-sqlite3`, `commander`, and `node-fetch`.
 
----
+## Installation
+
+```bash
+npm install -g filelu-vault
+```
 
 ## Quick Start
 
+### 1. Set your API Key
+
+Obtain your API key from the FileLu dashboard.
+
 ```bash
-# Install
-npm install -g filelu-vault
-
-# Configure
-vault config set-key YOUR_API_KEY
-
-# Upload
-vault upload myfile.txt
-
-# Backup a directory
-vault backup ./my-project
-
-# Watch for changes
-vault sync ./my-project
+vault config set-key <your-api-key>
 ```
 
----
+### 2. Verify Status
 
-## Documentation
+Check your account storage and limits.
 
-> **AI agents:** Read these docs before writing any code. Start with `AGENTS.md`.
+```bash
+vault status
+```
 
-### Strategy & Requirements
+### 3. Upload a File
 
-| Document | Purpose |
-|----------|---------|
-| [PRD.md](PRD.md) | Product Requirements — north star, MVP scope, what NOT to build |
-| [DECISIONS.md](DECISIONS.md) | Architectural Decision Records — why we chose what we chose |
+Upload a single file. It will skip automatically if the exact file has already been uploaded.
 
-### Design & Architecture
+```bash
+vault upload my-photo.jpg
+```
 
-| Document | Purpose |
-|----------|---------|
-| [DESIGN.md](DESIGN.md) | Design system — colors, typography, terminal output patterns |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | Tech stack, directory structure, data flows, system layers |
-| [DATA_MODEL.md](DATA_MODEL.md) | Database tables, relationships, RLS, migration strategy |
+### 4. Backup a Directory
 
-### Standards & Constraints
+Recursively scan and upload all files in a directory.
 
-| Document | Purpose |
-|----------|---------|
-| [PATTERNS.md](PATTERNS.md) | Coding standards — TypeScript, errors, logging, testing, IDE constraints |
-| [CONSTRAINTS.md](CONSTRAINTS.md) | Hard boundaries — allowed deps, performance targets, security rules |
-| [THREAT_MODEL.md](THREAT_MODEL.md) | Security — threat actors, attack surfaces, mitigations |
-| [TESTING.md](TESTING.md) | Testing strategy — patterns, coverage, CI gates |
+```bash
+vault backup ./documents
+```
+*Tip: Use `--dry-run` to see what would be uploaded without actually transferring data.*
 
-### Planning & Execution
+### 5. Continuously Sync
 
-| Document | Purpose |
-|----------|---------|
-| [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) | 10-task checklist with granular steps |
-| [TODO.md](TODO.md) | Master task tracker with checkboxes |
-| [TASK_TODAY.md](TASK_TODAY.md) | Daily session tracker |
+Watch a directory for changes and automatically upload new or modified files.
 
-### Operations & Maintenance
+```bash
+vault sync ./projects
+```
 
-| Document | Purpose |
-|----------|---------|
-| [DOCUMENTATION.md](DOCUMENTATION.md) | Living system docs — module registry, data flows |
-| [AUDIT.md](AUDIT.md) | Codebase audit — built vs. planned |
-| [BUGS.md](BUGS.md) | Bug log with root cause tracking |
-| [MEMORY.md](MEMORY.md) | AI memory — corrections, preferences, findings |
+## Client-Side Encryption
 
-### AI Agent Config
+To ensure maximum security, you can configure `filelu-vault` to encrypt all files *before* they are uploaded. This uses AES-256-GCM with a 12-byte IV and 16-byte Authentication Tag.
 
-| Document | Purpose |
-|----------|---------|
-| [AGENTS.md](AGENTS.md) | How AI assistants should behave in this project |
+1. **Enable Encryption in Config**
+   Edit `~/.filelu-vault/config.json`:
+   ```json
+   {
+     "encryptionEnabled": true,
+     "encryptionKey": "<your-base64-encoded-32-byte-key>"
+   }
+   ```
+2. **Use the `-e` flag**
+   You can also trigger encryption per-command using the `-e` or `--encrypt` flag.
+   ```bash
+   vault backup -e ./secret-documents
+   ```
 
----
+*Note: You are responsible for securely backing up your encryption key. If lost, your encrypted files cannot be recovered.*
 
-## Tech Stack
+## Development
 
-| Component | Technology |
-|-----------|-----------|
-| Runtime | Node.js 20+ |
-| Language | TypeScript (strict) |
-| CLI | Commander.js |
-| Database | SQLite (better-sqlite3) |
-| HTTP | node-fetch |
-| Encryption | AES-256-GCM (Node.js crypto) |
-| Testing | Vitest |
-| Bundling | tsup |
-
----
-
-## Security
-
-- API keys stored with `0600` permissions — never logged
-- Optional AES-256-GCM encryption before upload
-- Streaming encryption — handles large files without memory issues
-- Only 4 runtime dependencies — minimal attack surface
-- See [THREAT_MODEL.md](THREAT_MODEL.md) for full security analysis
-
----
+```bash
+git clone https://github.com/filelu-vault/filelu-vault.git
+cd filelu-vault
+npm ci
+npm run build
+npm test
+```
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for details.
+MIT License. See [LICENSE](LICENSE) for details.

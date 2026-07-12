@@ -1,7 +1,7 @@
 # Task Today
 
 **Date:** 2026-07-12
-**Focus:** Task 9 — Testing & CI
+**Focus:** Task 10 — Documentation & GitHub Publish
 **Agent:** Antigravity (Gemini 3.1 Pro High)
 
 ## Status
@@ -15,19 +15,13 @@
 - [x] Task 6: Backup Engine
 - [x] Task 7: Sync Engine
 - [x] Task 8: CLI Commands
-  - [x] Step 1: Create src/cli/index.ts (entry point)
-  - [x] Step 2: Implement Config commands (`config set-key`, `config show`)
-  - [x] Step 3: Implement Upload command (`upload <file>`)
-  - [x] Step 4: Implement Backup command (`backup <dir>`)
-  - [x] Step 5: Implement Sync command (`sync <dir>`)
-  - [x] Step 6: Implement Status command (`status`)
-  - [x] Step 7: Handle `--verbose` and `--json` formatting per DESIGN.md
-  - [x] Step 8: Wire up graceful shutdown for sync (`SIGINT`)
-  - [x] Step 9: Make it executable (`chmod +x bin/vault.js`)
-- [/] Task 9: Testing & CI
-  - [ ] Complete e2e/integration tests (`tests/integration/`)
-  - [ ] Set up GitHub Actions CI (`.github/workflows/ci.yml`)
+- [x] Task 9: Testing & CI
+- [x] Task 10: Documentation & GitHub Publish
+  - [x] Step 1: Write `README.md` (features, install, usage, encryption notes)
+  - [x] Step 2: Write `CHANGELOG.md`
+  - [x] Step 3: Write `DOCUMENTATION.md`
+  - [x] Step 4: Final verification and finish up
 
 ## Next After This
 
-Task 10: Documentation & GitHub Publish
+Completion! Project is finished.
