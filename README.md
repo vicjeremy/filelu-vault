@@ -18,8 +18,14 @@ Secure, dedup-aware CLI for syncing and backing up files to [FileLu](https://fil
 ## Installation
 
 ```bash
-npm install -g filelu-vault
+git clone https://github.com/vicjeremy/filelu-vault.git
+cd filelu-vault
+npm install
+npm run build
+npm link
 ```
+
+This will link the `vault` command globally on your system.
 
 ## Quick Start
 
