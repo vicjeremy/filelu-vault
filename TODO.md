@@ -55,12 +55,12 @@
 
 ## Phase 2: Core Features (Tasks 4-7)
 
-- [ ] **Task 4: Upload Engine**
-  - [ ] SHA-256 file hash
-  - [ ] Progress bar
-  - [ ] Uploader class (hash → dedup → upload → record)
-  - [ ] Batch upload with concurrency
-  - [ ] Upload tests
+- [x] **Task 4: Upload Engine**
+  - [x] SHA-256 file hash
+  - [x] Progress bar
+  - [x] Uploader class (hash → dedup → upload → record)
+  - [x] Batch upload with concurrency
+  - [x] Upload tests
 
 - [ ] **Task 5: Encryption**
   - [ ] Key generation
