@@ -29,27 +29,27 @@
 
 ## Phase 1: Foundation (Tasks 1-3)
 
-- [ ] **Task 1: Project Scaffold**
-  - [ ] package.json + dependencies
-  - [ ] tsconfig.json
-  - [ ] vitest.config.ts
-  - [ ] .gitignore, .env.example, LICENSE
-  - [ ] Config schema + store
-  - [ ] Error classes
-  - [ ] Logger
-  - [ ] Config tests
+- [x] **Task 1: Project Scaffold**
+  - [x] package.json + dependencies
+  - [x] tsconfig.json
+  - [x] vitest.config.ts
+  - [x] .gitignore, .env.example, LICENSE
+  - [x] Config schema + store
+  - [x] Error classes
+  - [x] Logger
+  - [x] Config tests
 
-- [ ] **Task 2: API Client**
-  - [ ] API types
-  - [ ] withRetry helper
-  - [ ] FileLuClient class
-  - [ ] API client tests
+- [x] **Task 2: API Client**
+  - [x] API types
+  - [x] withRetry helper
+  - [x] FileLuClient class
+  - [x] API client tests
 
-- [ ] **Task 3: Database Layer**
-  - [ ] DB models
-  - [ ] SQLite init + migrations
-  - [ ] Prepared queries
-  - [ ] Database tests
+- [x] **Task 3: Database Layer**
+  - [x] DB models
+  - [x] SQLite init + migrations
+  - [x] Prepared queries
+  - [x] Database tests
 
 ---
 
